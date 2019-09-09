@@ -1,0 +1,50 @@
+uuid: 77ae9e32-bc1d-4648-b29f-f202571e8365
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.page
+  module:
+    - entity_reference_revisions
+id: node.page.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: page
+label: Content
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles: null
+    target_bundles_drag_drop:
+      text:
+        weight: -17
+        enabled: false
+      image:
+        weight: -16
+        enabled: false
+      gallery:
+        weight: -15
+        enabled: false
+      from_library:
+        weight: -14
+        enabled: false
+      image_and_text:
+        weight: -13
+        enabled: false
+      remote_video:
+        weight: -12
+        enabled: false
+      code:
+        weight: -11
+        enabled: false
+      remote_videos_library:
+        weight: -10
+        enabled: false
+field_type: entity_reference_revisions

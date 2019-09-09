@@ -1,0 +1,17 @@
+uuid: 50ab1fdc-666c-46ce-b6ea-163827c0fc8d
+langcode: en
+status: true
+dependencies:
+  module:
+    - blog_paragraphs
+id: gallery
+label: Gallery
+icon_uuid: null
+description: ''
+behavior_plugins:
+  blog_paragraphs_gallery:
+    enabled: true
+  dlog_paragraphs_paragraph_style:
+    enabled: true
+  dlog_paragraphs_paragraph_title:
+    enabled: true

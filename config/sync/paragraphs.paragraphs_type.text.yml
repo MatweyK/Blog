@@ -1,0 +1,15 @@
+uuid: 47cecffb-f4ab-4568-a503-eacca681241a
+langcode: en
+status: true
+dependencies:
+  module:
+    - blog_paragraphs
+id: text
+label: Text
+icon_uuid: null
+description: ''
+behavior_plugins:
+  dlog_paragraphs_paragraph_style:
+    enabled: true
+  dlog_paragraphs_paragraph_title:
+    enabled: true

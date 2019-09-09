@@ -1,0 +1,17 @@
+uuid: 6f530281-8de0-4b27-8ab4-b6ea142769dc
+langcode: en
+status: true
+dependencies:
+  module:
+    - blog_paragraphs
+id: image_and_text
+label: 'Image and text'
+icon_uuid: null
+description: ''
+behavior_plugins:
+  blog_paragraphs_image_and_text:
+    enabled: true
+  dlog_paragraphs_paragraph_style:
+    enabled: true
+  dlog_paragraphs_paragraph_title:
+    enabled: true

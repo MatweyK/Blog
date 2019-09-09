@@ -1,0 +1,19 @@
+uuid: f259e24c-6fa1-4306-86d6-3e1d541ec4ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.remote_videos_library
+id: paragraph.remote_videos_library.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: remote_videos_library
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

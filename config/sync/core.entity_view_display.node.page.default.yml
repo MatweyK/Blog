@@ -1,0 +1,30 @@
+uuid: 121b56c7-34c7-4c4e-aa93-e2485497957b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.field_paragraphs
+    - node.type.page
+  module:
+    - entity_reference_revisions
+    - user
+_core:
+  default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    weight: 102
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 101
+    region: content
+hidden: {  }
