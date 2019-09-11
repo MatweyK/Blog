@@ -1,0 +1,20 @@
+uuid: ca43921f-2024-4b0b-be12-7561a6658a0c
+langcode: en
+status: true
+dependencies:
+  module:
+    - blog_hero
+  theme:
+    - bartik
+id: blog_hero
+theme: bartik
+region: content
+weight: -7
+provider: null
+plugin: blog_hero
+settings:
+  id: blog_hero
+  label: 'Blog Hero'
+  provider: blog_hero
+  label_display: '0'
+visibility: {  }

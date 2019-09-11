@@ -1,0 +1,6 @@
+services:
+  blog_hero.generator:
+    class: Drupal\blog_hero\Generator\BlogHeroPluginGenerator
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: drush.generator }

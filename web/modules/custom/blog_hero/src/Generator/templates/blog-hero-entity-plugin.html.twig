@@ -1,0 +1,54 @@
+<?php
+
+namespace Drupal\{{ machine_name }}\Plugin\BlogHero\Entity;
+
+use Drupal\blog_hero\Plugin\BlogHero\Entity\BlogHeroEntityPluginBase;
+
+/**
+ * Hero block for entity.
+ *
+ * @BlogHeroEntity(
+ *   id = "{{ plugin_id }}",
+ *   entity_type = "{{ entity_type }}",
+ *   entity_bundle = {"*"}
+ * )
+ */
+class {{ name }} extends BlogHeroEntityPluginBase {
+
+{% if is_title %}
+  /**
+   * {@inheritdoc}
+   */
+  public function getHeroTitle() {
+    return $this->getPageTitle();
+  }
+
+{% endif %}
+{% if is_subtitle %}
+  /**
+   * {@inheritdoc}
+   */
+  public function getHeroSubtitle() {
+
+  }
+
+{% endif %}
+{% if is_image %}
+  /**
+   * {@inheritdoc}
+   */
+  public function getHeroImage() {
+
+  }
+
+{% endif %}
+{% if is_video %}
+  /**
+   * {@inheritdoc}
+   */
+  public function getHeroVideo() {
+
+  }
+
+{% endif %}
+}

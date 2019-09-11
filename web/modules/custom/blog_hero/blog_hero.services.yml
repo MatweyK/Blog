@@ -1,0 +1,8 @@
+services:
+  plugin.manager.blog_hero.entity:
+    class: Drupal\blog_hero\Plugin\BlogHeroPluginManager
+    arguments: [entity, '@container.namespaces', '@cache.discovery', '@module_handler', '@current_route_match', '@plugin.manager.condition']
+
+  plugin.manager.blog_hero.path:
+    class: Drupal\blog_hero\Plugin\BlogHeroPluginManager
+    arguments: [path, '@container.namespaces', '@cache.discovery', '@module_handler', '@current_route_match', '@plugin.manager.condition']

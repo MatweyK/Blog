@@ -1,4 +1,4 @@
-name: Blog
+name: Blog prev-next
 description: Base module for custom code, hooks and functions.
 type: module
 core: 8.x

@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Main file for custom hooks and functions.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function blog_hero_theme($existing, $type, $theme, $path) {
+  return [
+    'blog_hero' => [
+      'variables' => [
+        'title' => NULL,
+        'subtitle' => NULL,
+        'image' => NULL,
+        'video' => [],
+        'plugin_id' => NULL,
+      ],
+      'file' => 'blog_hero.theme.inc',
+      'pattern' => 'blog_hero__',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK() for blog-hero.html.twig.
+ */
+function blog_hero_theme_suggestions_blog_hero(array $variables) {
+  $suggestions = [];
+
+  if (!empty($variables['plugin_id'])) {
+    $suggestions[] = 'blog_hero__' . $variables['plugin_id'];
+  }
+
+  if (!empty($variables['image'])) {
+    $suggestions[] = 'blog_hero__image';
+  }
+
+  if (!empty($variables['video']) && !empty($variables['image'])) {
+    $suggestions[] = 'blog_hero__video';
+  }
+
+  if (!empty($variables['image'])) {
+    $suggestions[] = 'blog_hero__' . $variables['plugin_id'] . '__image';
+  }
+
+  if (!empty($variables['video']) && !empty($variables['image'])) {
+    $suggestions[] = 'blog_hero__' . $variables['plugin_id'] . '__video';
+  }
+
+  return $suggestions;
+}

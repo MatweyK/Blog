@@ -11,6 +11,7 @@ dependencies:
     - node.type.blog_article
   module:
     - entity_reference_revisions
+    - media
     - text
     - user
 id: node.blog_article.default
@@ -44,12 +45,12 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   field_pro:
-    type: entity_reference_entity_view
+    type: media_thumbnail
     weight: 5
     label: above
     settings:
-      view_mode: default
-      link: false
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
     region: content
   field_tags:
