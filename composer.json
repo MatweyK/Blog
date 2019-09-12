@@ -126,9 +126,12 @@
             }
 		},
         "patches": {
-		    "drupal/tvi": {
+        	"drupal/tvi": {
 		    	"Route enhancer": "https://www.drupal.org/files/issues/2018-08-17/route_enhancer-2993234-3.patch"
 			},
+			"drupal/config_installer": {
+                "Memory leak": "https://www.drupal.org/files/issues/2018-08-21/2991182-6.patch"
+            },
 			"drupal/codemirror_editor": {
 				"library_not_loaded_alert-3051881-8.patch": "https://www.drupal.org/files/issues/2019-05-08/library_not_loaded_alert-3051881-8.patch"
 			}

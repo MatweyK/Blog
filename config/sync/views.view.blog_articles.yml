@@ -170,6 +170,27 @@ display:
       footer: {  }
       empty: {  }
       relationships: {  }
+      arguments: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  in_tag:
+    display_plugin: page
+    id: in_tag
+    display_title: 'Articles in tags'
+    position: 1
+    display_options:
+      display_extenders:
+        metatag_display_extender: {  }
+      path: taxonomy/term/%taxonomy_term
+      display_description: ''
       arguments:
         field_tags_target_id:
           id: field_tags_target_id
@@ -210,7 +231,8 @@ display:
           break_phrase: false
           not: false
           plugin_id: numeric
-      display_extenders: {  }
+      defaults:
+        arguments: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -221,22 +243,24 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  in_tag:
+  page:
     display_plugin: page
-    id: in_tag
-    display_title: 'Articles in tags'
-    position: 1
+    id: page
+    display_title: 'Articles in blog'
+    position: 2
     display_options:
       display_extenders:
         metatag_display_extender: {  }
-      path: taxonomy/term/%taxonomy_term
+      title: Blog
+      defaults:
+        title: false
       display_description: ''
+      path: blog
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
