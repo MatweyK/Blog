@@ -1,0 +1,20 @@
+uuid: 08ff20df-279a-4f95-ab31-23a78c9a94e5
+langcode: en
+status: false
+dependencies:
+  module:
+    - blog_hero
+  theme:
+    - blogger
+id: blogger_blog_hero
+theme: blogger
+region: content
+weight: -7
+provider: null
+plugin: blog_hero
+settings:
+  id: blog_hero
+  label: 'Blog Hero'
+  provider: blog_hero
+  label_display: '0'
+visibility: {  }

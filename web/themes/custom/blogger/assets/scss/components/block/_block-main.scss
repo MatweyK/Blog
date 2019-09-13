@@ -1,0 +1,6 @@
+.block-main {
+  &__menu {
+    @include list-unstyled;
+    lost-flex-container: row;
+  }
+}

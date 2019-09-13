@@ -1,0 +1,22 @@
+uuid: dd4cd0e7-1923-4148-a6a2-fab8c3d2a15a
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - blogger
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: blogger_help
+theme: blogger
+region: content
+weight: -4
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: a86a5a82-925d-4751-be65-ed867bd5084c
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - blogger
+_core:
+  default_config_hash: jQQUUWN2Uxr5qZtc9zcJKBCxpKY8orN1u2HPqYYRQDI
+id: blogger_powered
+theme: blogger
+region: content
+weight: -6
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

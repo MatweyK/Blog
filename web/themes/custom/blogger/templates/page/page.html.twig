@@ -1,0 +1,10 @@
+{% set bem_block = 'app' %}
+<div class="{{ bem_block }}">
+  {{ snippet('header_main') }}
+  <main class="{{ bem_block }}__content">
+    {{ page.sidebar_first }}
+    {{ page.content }}
+  </main>
+
+
+</div>

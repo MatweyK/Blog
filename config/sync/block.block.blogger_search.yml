@@ -1,0 +1,22 @@
+uuid: efe49649-d88f-4470-9857-08a8fc8ad412
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - blogger
+_core:
+  default_config_hash: za-39d5WDUg6XvbyqSnuVYEeq6QM4qKJxW8MnoAha5A
+id: blogger_search
+theme: blogger
+region: sidebar_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }
