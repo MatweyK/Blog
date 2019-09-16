@@ -1,0 +1,25 @@
+--- js/photoswipe.jquery.js
++++ js/photoswipe.jquery.js
+@@ -134,6 +147,22 @@
+       // Pass data to PhotoSwipe and initialize it
+       var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+       gallery.init();
++      gallery.listen('beforeChange', function() {
++        var currItem = $(gallery.currItem.container);
++        $('.pswp__video').removeClass('active');
++        var currItemIframe = currItem.find('.pswp__video').addClass('active');
++        $('.pswp__video').each(function() {
++          if (!$(this).hasClass('active')) {
++            $(this).attr('src', $(this).attr('src'));
++          }
++        });
++      });
++      gallery.listen('close', function() {
++        $('.pswp__video').each(function() {
++          $(this).attr('src', $(this).attr('src'));
++        });
++      });
++
+       this.galleries.push(gallery);
+     },
+     /**

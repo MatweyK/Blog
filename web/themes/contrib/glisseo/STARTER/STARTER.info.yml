@@ -1,0 +1,26 @@
+# Theme base information.
+screenshot: screenshot.png
+name: Glisseo (starter theme)
+type: theme
+base theme: glisseo
+description: 'Glisseo is a base theme for fast and easy start to theme your project.'
+package: Glisseo
+# core: 8.x
+hidden: true # REMOVE IT
+libraries:
+  - STARTER/style.base
+  - STARTER/style.layout
+  - STARTER/style.component
+  - STARTER/style.utilities
+regions:
+  header: Header
+  navigation: Navigation
+  content: Content
+  sidebar_first: 'Sidebar first'
+  footer: Footer
+
+# Information added by Drupal.org packaging script on 2018-08-06
+version: '8.x-1.0-alpha8'
+core: '8.x'
+project: 'glisseo'
+datestamp: 1533568991

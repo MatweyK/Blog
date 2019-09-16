@@ -1,0 +1,443 @@
+--- src/Plugin/Field/FieldFormatter/PhotoswipeFieldFormatter.php
++++ src/Plugin/Field/FieldFormatter/PhotoswipeFieldFormatter.php
+@@ -163,59 +286,116 @@ class PhotoswipeFieldFormatter extends FormatterBase {
+    * {@inheritdoc}
+    */
+   public function settingsForm(array $form, FormStateInterface $form_state) {
++
+     $image_styles = image_style_options(FALSE);
+     $image_styles_hide = $image_styles;
+     $image_styles_hide['hide'] = $this->t('Hide (do not display image)');
+-    $element['photoswipe_node_style_first'] = [
+-      '#title' => $this->t('Node image style for first image'),
+-      '#type' => 'select',
+-      '#default_value' => $this->getSetting('photoswipe_node_style_first'),
+-      '#empty_option' => $this->t('No special style.'),
+-      '#options' => $image_styles_hide,
+-      '#description' => $this->t('Image style to use in the content for the first image.'),
+-    ];
+-    $element['photoswipe_node_style'] = [
+-      '#title' => $this->t('Node image style'),
+-      '#type' => 'select',
+-      '#default_value' => $this->getSetting('photoswipe_node_style'),
+-      '#empty_option' => $this->t('None (original image)'),
+-      '#options' => $image_styles_hide,
+-      '#description' => $this->t('Image style to use in the node.'),
+-    ];
+-    $element['photoswipe_image_style'] = [
+-      '#title' => $this->t('Photoswipe image style'),
+-      '#type' => 'select',
+-      '#default_value' => $this->getSetting('photoswipe_image_style'),
+-      '#empty_option' => $this->t('None (original image)'),
+-      '#options' => $image_styles,
+-      '#description' => $this->t('Image style to use in the Photoswipe.'),
+-    ];
+-
+-    // Set our caption options.
+-    $caption_options = [
+-      'title' => $this->t('Image title tag'),
+-      'alt' => $this->t('Image alt tag'),
+-      'node_title' => $this->t('Entity title'),
+-    ];
++    $isOembed = MediaType::load($this->fieldDefinition->getTargetBundle())->getSource() instanceof OEmbedInterface;
++
++    if ($isOembed === false) {
++      $element['photoswipe_node_style_first'] = [
++        '#title' => $this->t('Node image style for first image'),
++        '#type' => 'select',
++        '#default_value' => $this->getSetting('photoswipe_node_style_first'),
++        '#empty_option' => $this->t('No special style.'),
++        '#options' => $image_styles_hide,
++        '#description' => $this->t('Image style to use in the content for the first image.'),
++      ];
++      $element['photoswipe_node_style'] = [
++        '#title' => $this->t('Node image style'),
++        '#type' => 'select',
++        '#default_value' => $this->getSetting('photoswipe_node_style'),
++        '#empty_option' => $this->t('None (original image)'),
++        '#options' => $image_styles_hide,
++        '#description' => $this->t('Image style to use in the node.'),
++      ];
++      $element['photoswipe_image_style'] = [
++        '#title' => $this->t('Photoswipe image style'),
++        '#type' => 'select',
++        '#default_value' => $this->getSetting('photoswipe_image_style'),
++        '#empty_option' => $this->t('None (original image)'),
++        '#options' => $image_styles,
++        '#description' => $this->t('Image style to use in the Photoswipe.'),
++      ];
+ 
+-    $element = $this->addEntityReferenceSettings($element);
++      // Set our caption options.
++      $caption_options = [
++        'title' => $this->t('Image title tag'),
++        'alt' => $this->t('Image alt tag'),
++        'node_title' => $this->t('Entity title'),
++      ];
++      $element = $this->addEntityReferenceSettings($element);
+ 
+-    // Add the other parent entity fields as options.
+-    if (isset($form['#fields'])) {
+-      foreach ($form['#fields'] as $parent_field) {
+-        if ($parent_field != $this->fieldDefinition->getName()) {
+-          $caption_options[$parent_field] = $parent_field;
++      // Add the other parent entity fields as options.
++      if (isset($form['#fields'])) {
++        foreach ($form['#fields'] as $parent_field) {
++          if ($parent_field != $this->fieldDefinition->getName()) {
++            $caption_options[$parent_field] = $parent_field;
++          }
+         }
+       }
++
++      $element['photoswipe_caption'] = [
++        '#title' => $this->t('Photoswipe image caption'),
++        '#type' => 'select',
++        '#default_value' => $this->getSetting('photoswipe_caption'),
++        '#options' => $caption_options,
++        '#description' => $this->t('Field that should be used for the caption.'),
++      ];
++
+     }
++    else {
++      $element['photoswipe_node_style'] = [
++        '#title' => $this->t('Node image style'),
++        '#type' => 'select',
++        '#default_value' => $this->getSetting('photoswipe_node_style'),
++        '#empty_option' => $this->t('None (original image)'),
++        '#options' => $image_styles_hide,
++        '#description' => $this->t('Image style to use in the node.'),
++      ];
+ 
+-    $element['photoswipe_caption'] = [
+-      '#title' => $this->t('Photoswipe image caption'),
+-      '#type' => 'select',
+-      '#default_value' => $this->getSetting('photoswipe_caption'),
+-      '#options' => $caption_options,
+-      '#description' => $this->t('Field that should be used for the caption.'),
+-    ];
++      $photoswipe_image_style_options = [
++        'oEmbed_field' => $this->t('Remote oEmbed rendered HTML (iframe)'),
++      ];
++      $element['photoswipe_image_style'] = [
++        '#title' => $this->t('Photoswipe image style'),
++        '#type' => 'select',
++        '#default_value' => $this->getSetting('photoswipe_image_style'),
++        '#options' => $photoswipe_image_style_options,
++        '#description' => $this->t('Image style to use in the Photoswipe.'),
++      ];
++
++      $caption_options = [
++        'remote_title' => $this->t('Remote oEmbed title'),
++      ];
++      $element['photoswipe_caption'] = [
++        '#title' => $this->t('Photoswipe image caption'),
++        '#type' => 'select',
++        '#default_value' => $this->getSetting('photoswipe_caption'),
++        '#options' => $caption_options,
++        '#description' => $this->t('Field that should be used for the caption.'),
++      ];
++
++      $element['max_width'] = [
++        '#type' => 'number',
++        '#title' => $this->t('Maximum width'),
++        '#default_value' => $this->getSetting('max_width'),
++        '#size' => 5,
++        '#maxlength' => 5,
++        '#field_suffix' => $this->t('pixels'),
++        '#min' => 0,
++      ];
++
++      $element['max_height'] = [
++        '#type' => 'number',
++        '#title' => $this->t('Maximum height'),
++        '#default_value' => $this->getSetting('max_height'),
++        '#size' => 5,
++        '#maxlength' => 5,
++        '#field_suffix' => $this->t('pixels'),
++        '#min' => 0,
++      ];
++    }
+ 
+     // Add the current view mode so we can control view mode for node fields.
+     $element['photoswipe_view_mode'] = [
+@@ -279,52 +458,90 @@ class PhotoswipeFieldFormatter extends FormatterBase {
+     unset($image_styles['']);
+     // Styles could be lost because of enabled/disabled modules that defines
+     // their styles in code.
+-    if (isset($image_styles[$this->getSetting('photoswipe_node_style')])) {
+-      $summary[] = $this->t('Node image style: @style', ['@style' => $image_styles[$this->getSetting('photoswipe_node_style')]]);
+-    }
+-    elseif ($this->getSetting('photoswipe_node_style') == 'hide') {
+-      $summary[] = $this->t('Node image style: Hide');
+-    }
+-    else {
+-      $summary[] = $this->t('Node image style: Original image');
+-    }
+ 
+-    if (isset($image_styles[$this->getSetting('photoswipe_node_style_first')])) {
+-      $summary[] = $this->t('Node image style of first image: @style', ['@style' => $image_styles[$this->getSetting('photoswipe_node_style_first')]]);
+-    }
+-    elseif ($this->getSetting('photoswipe_node_style_first') == 'hide') {
+-      $summary[] = $this->t('Node image style of first image: Hide');
+-    }
+-    else {
+-      $summary[] = $this->t('Node image style of first image: Original image');
+-    }
++    $isOembed = MediaType::load($this->fieldDefinition->getTargetBundle())->getSource() instanceof OEmbedInterface;
+ 
+-    if (isset($image_styles[$this->getSetting('photoswipe_image_style')])) {
+-      $summary[] = $this->t('Photoswipe image style: @style', ['@style' => $image_styles[$this->getSetting('photoswipe_image_style')]]);
+-    }
+-    else {
+-      $summary[] = $this->t('photoswipe image style: Original image');
+-    }
++    if ($isOembed === false) {
++      if (isset($image_styles[$this->getSetting('photoswipe_node_style')])) {
++        $summary[] = $this->t('Node image style: @style', ['@style' => $image_styles[$this->getSetting('photoswipe_node_style')]]);
++      }
++      elseif ($this->getSetting('photoswipe_node_style') == 'hide') {
++        $summary[] = $this->t('Node image style: Hide');
++      }
++      else {
++        $summary[] = $this->t('Node image style: Original image');
++      }
+ 
+-    if ($this->getSetting('photoswipe_reference_image_field')) {
+-      $summary[] = $this->t('Referenced entity image field: @field', ['@field' => $this->getSetting('photoswipe_reference_image_field')]);
+-    }
++      if (isset($image_styles[$this->getSetting('photoswipe_node_style_first')])) {
++        $summary[] = $this->t('Node image style of first image: @style', ['@style' => $image_styles[$this->getSetting('photoswipe_node_style_first')]]);
++      }
++      elseif ($this->getSetting('photoswipe_node_style_first') == 'hide') {
++        $summary[] = $this->t('Node image style of first image: Hide');
++      }
++      else {
++        $summary[] = $this->t('Node image style of first image: Original image');
++      }
+ 
+-    if ($this->getSetting('photoswipe_caption')) {
+-      $caption_options = [
+-        'alt' => $this->t('Image alt tag'),
+-        'title' => $this->t('Image title tag'),
+-        'node_title' => $this->t('Entity title'),
+-      ];
+-      if (array_key_exists($this->getSetting('photoswipe_caption'), $caption_options)) {
+-        $caption_setting = $caption_options[$this->getSetting('photoswipe_caption')];
++      if (isset($image_styles[$this->getSetting('photoswipe_image_style')])) {
++        $summary[] = $this->t('Photoswipe image style: @style', ['@style' => $image_styles[$this->getSetting('photoswipe_image_style')]]);
+       }
+       else {
+-        $caption_setting = $this->getSetting('photoswipe_caption');
++        $summary[] = $this->t('photoswipe image style: Original image');
++      }
++
++      if ($this->getSetting('photoswipe_reference_image_field')) {
++        $summary[] = $this->t('Referenced entity image field: @field', ['@field' => $this->getSetting('photoswipe_reference_image_field')]);
++      }
++
++      if ($this->getSetting('photoswipe_caption')) {
++        $caption_options = [
++          'alt' => $this->t('Image alt tag'),
++          'title' => $this->t('Image title tag'),
++          'node_title' => $this->t('Entity title'),
++        ];
++        if (array_key_exists($this->getSetting('photoswipe_caption'), $caption_options)) {
++          $caption_setting = $caption_options[$this->getSetting('photoswipe_caption')];
++        }
++        else {
++          $caption_setting = $this->getSetting('photoswipe_caption');
++        }
++        $summary[] = $this->t('Photoswipe Caption: @field', ['@field' => $caption_setting]);
+       }
+-      $summary[] = $this->t('Photoswipe Caption: @field', ['@field' => $caption_setting]);
++
+     }
++    else {
++      if (isset($image_styles[$this->getSetting('photoswipe_node_style')])) {
++        $summary[] = $this->t('Node image style: @style', ['@style' => $image_styles[$this->getSetting('photoswipe_node_style')]]);
++      }
++      elseif ($this->getSetting('photoswipe_node_style') == 'hide') {
++        $summary[] = $this->t('Node image style: Hide');
++      }
++      else {
++        $summary[] = $this->t('Node image style: Original image');
++      }
++
++      $summary[] = $this->t('Photoswipe image style: Remote oEmbed rendered HTML (iframe)');
++
++      $summary[] = $this->t('Photoswipe caption: Remote oEmbed title');
++
++      if ($this->getSetting('max_width') && $this->getSetting('max_height')) {
++        $summary[] = $this->t('Maximum size: %max_width x %max_height pixels', [
++          '%max_width' => $this->getSetting('max_width'),
++          '%max_height' => $this->getSetting('max_height'),
++        ]);
++      }
++      elseif ($this->getSetting('max_width')) {
++        $summary[] = $this->t('Maximum width: %max_width pixels', [
++          '%max_width' => $this->getSetting('max_width'),
++        ]);
++      }
++      elseif ($this->getSetting('max_height')) {
++        $summary[] = $this->t('Maximum height: %max_height pixels', [
++          '%max_height' => $this->getSetting('max_height'),
++        ]);
++      }
+ 
++    }
+     return $summary;
+   }
+ 
+@@ -335,45 +552,117 @@ class PhotoswipeFieldFormatter extends FormatterBase {
+     $elements = [];
+     $settings = $this->getSettings();
+ 
+-    if ($items->isEmpty()) {
+-      $default_image = $this->getFieldSetting('default_image');
+-      // If we are dealing with a configurable field, look in both
+-      // instance-level and field-level settings.
+-      if (empty($default_image['uuid']) && $this->fieldDefinition instanceof FieldConfigInterface) {
+-        $default_image = $this->fieldDefinition->getFieldStorageDefinition()
+-          ->getSetting('default_image');
++    if ($items->getName() === 'field_media_image') {
++      if ($items->isEmpty()) {
++        $default_image = $this->getFieldSetting('default_image');
++        // If we are dealing with a configurable field, look in both
++        // instance-level and field-level settings.
++        if (empty($default_image['uuid']) && $this->fieldDefinition instanceof FieldConfigInterface) {
++          $default_image = $this->fieldDefinition->getFieldStorageDefinition()
++            ->getSetting('default_image');
++        }
++        if (!empty($default_image['uuid']) && $file = \Drupal::entityManager()->loadEntityByUuid('file', $default_image['uuid'])) {
++          // Clone the FieldItemList into a runtime-only object for the formatter,
++          // so that the fallback image can be rendered without affecting the
++          // field values in the entity being rendered.
++          $items = clone $items;
++          $items->setValue([
++            'target_id' => $file->id(),
++            'alt' => $default_image['at'],
++            'title' => $default_image['title'],
++            'width' => $default_image['width'],
++            'height' => $default_image['height'],
++            'entity' => $file,
++            '_loaded' => TRUE,
++            '_is_default' => TRUE,
++          ]);
++        }
+       }
+-      if (!empty($default_image['uuid']) && $file = \Drupal::entityManager()->loadEntityByUuid('file', $default_image['uuid'])) {
+-        // Clone the FieldItemList into a runtime-only object for the formatter,
+-        // so that the fallback image can be rendered without affecting the
+-        // field values in the entity being rendered.
+-        $items = clone $items;
+-        $items->setValue([
+-          'target_id' => $file->id(),
+-          'alt' => $default_image['alt'],
+-          'title' => $default_image['title'],
+-          'width' => $default_image['width'],
+-          'height' => $default_image['height'],
+-          'entity' => $file,
+-          '_loaded' => TRUE,
+-          '_is_default' => TRUE,
+-        ]);
++      foreach ($items as $delta => $item) {
++        $elements[$delta] = [
++          '#theme' => 'photoswipe_image_formatter',
++          '#item' => $item,
++          '#display_settings' => $settings,
++          '#delta' => $delta,
++        ];
+       }
+     }
++    elseif ($items->getName() === 'field_media_oembed_video') {
++      foreach ($items as $delta => $item) {
++        $oembed_item = MediaType::load($this->fieldDefinition->getTargetBundle())->getSource();
++        $media_entity = $item->getParent()->getEntity();
+ 
+-    if (!empty($items)) {
+-      \Drupal::service('photoswipe.assets_manager')->attach($elements);
+-      $elements['#prefix'] = '<div class="photoswipe-gallery">';
+-      $elements['#suffix'] = '</div>';
+-    }
++        $max_width = $this->getSetting('max_width');
++        $max_height = $this->getSetting('max_height');
+ 
+-    foreach ($items as $delta => $item) {
+-      $elements[$delta] = [
+-        '#theme' => 'photoswipe_image_formatter',
+-        '#item' => $item,
+-        '#display_settings' => $settings,
+-        '#delta' => $delta,
+-      ];
++        $main_property = $item->getFieldDefinition()->getFieldStorageDefinition()->getMainPropertyName();
++        $value = $item->{$main_property};
++
++        if (empty($value)) {
++          continue;
++        }
++
++        try {
++          $resource_url = $this->urlResolver->getResourceUrl($value, $max_width, $max_height);
++          $resource = $this->resourceFetcher->fetchResource($resource_url);
++        }
++        catch (ResourceException $exception) {
++          $this->logger->error("Could not retrieve the remote URL (@url).", ['@url' => $value]);
++          continue;
++        }
++
++        $url = Url::fromRoute('media.oembed_iframe', [], [
++          'query' => [
++            'url' => $value,
++            'max_width' => $max_width,
++            'max_height' => $max_height,
++            'hash' => $this->iFrameUrlHelper->getHash($value, $max_width, $max_height),
++          ],
++        ]);
++
++        $domain = $this->config->get('iframe_domain');
++        if ($domain) {
++          $url->setOption('base_url', $domain);
++        }
++
++        $htmlElement = [
++          '#type' => 'html_tag',
++          '#tag' => 'iframe',
++          '#attributes' => [
++            'src' => $url->toString(),
++            'frameborder' => 0,
++            'class' => 'pswp__video',
++            'scrolling' => FALSE,
++            'allowtransparency' => TRUE,
++            'width' => $max_width ?: $resource->getWidth(),
++            'height' => $max_height ?: $resource->getHeight(),
++          ],
++        ];
++
++        $thumbnail_uri = $oembed_item->getMetadata($media_entity,'thumbnail_uri');
++        $title = $resource->getTitle();
++        $width = MediaType::load($this->fieldDefinition->getTargetBundle())->getSource()->getMetadata($item->getParent()->getEntity(),'width');
++        $height = MediaType::load($this->fieldDefinition->getTargetBundle())->getSource()->getMetadata($item->getParent()->getEntity(),'height');
++        $parsed_html = '<div class="video-wrapper"><div class="video-wrapper-inside">' . str_replace('youtube.com', 'youtube-nocookie.com', render($htmlElement)) . '</div></div>';
++
++        $oembed_item = [
++          '#thumbnail_uri' => $thumbnail_uri,
++          '#title' => $title,
++          '#width' => $width,
++          '#height' => $height,
++          '#html' => $parsed_html,
++        ];
++
++        $elements[$delta] = [
++          '#theme' => 'photoswipe_image_formatter',
++          '#item' => $oembed_item,
++          '#display_settings' => $settings,
++          '#delta' => $delta,
++        ];
++        CacheableMetadata::createFromObject($resource)
++          ->addCacheTags($this->config->getCacheTags())
++          ->applyTo($elements[$delta]);
++      }
+     }
+ 
+     return $elements;

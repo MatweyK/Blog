@@ -1,0 +1,14 @@
+# Theme base information.
+screenshot: screenshot.png
+name: Glisseo (base theme)
+type: theme
+description: 'Glisseo is a base theme for fast and easy start to theme your project.'
+package: Glisseo
+# core: 8.x
+hidden: true
+
+# Information added by Drupal.org packaging script on 2018-08-06
+version: '8.x-1.0-alpha8'
+core: '8.x'
+project: 'glisseo'
+datestamp: 1533568991

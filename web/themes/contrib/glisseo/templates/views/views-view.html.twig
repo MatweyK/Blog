@@ -1,0 +1,90 @@
+{% set bem_block = 'view-' ~ id|clean_class ~ '-' ~ display_id|clean_class %}
+{% set classes = [
+  bem_block,
+  dom_id ? 'js-view-dom-id-' ~ dom_id,
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+
+  {% if title %}
+    {% block title %}
+      {{ title }}
+    {% endblock %}
+  {% endif %}
+
+  {{ title_suffix }}
+
+  {% if header %}
+    <div class="{{ bem_block }}__header">
+      {% block header %}
+        {{ header }}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  {% if exposed %}
+    <div class="{{ bem_block }}__filters">
+      {% block filters %}
+        {{ exposed }}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  {% if attachment_before %}
+    <div class="{{ bem_block }}__attachment {{ bem_block }}__attachment--before">
+      {% block attachment_before %}
+        {{ attachment_before }}
+      {% endblock attachment_before %}
+    </div>
+  {% endif %}
+
+  {% if rows %}
+    <div class="{{ bem_block }}__content">
+      {% block content %}
+        {{ rows }}
+      {% endblock %}
+    </div>
+  {% elseif empty %}
+    <div class="{{ bem_block }}__content {{ bem_block }}__content--empty">
+      {% block content_empty %}
+        {{ empty }}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  {% if pager %}
+    {% block pager %}
+      {{ pager }}
+    {% endblock %}
+  {% endif %}
+
+  {% if attachment_after %}
+    <div class="{{ bem_block }}__attachment {{ bem_block }}__attachment--after">
+      {% block attachment_after %}
+        {{ attachment_after }}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  {% if more %}
+    {% block more %}
+      {{ more }}
+    {% endblock %}
+  {% endif %}
+
+  {% if footer %}
+    <div class="{{ bem_block }}__footer">
+      {% block footer %}
+        {{ footer }}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  {% if feed_icons %}
+    <div class="{{ bem_block }}__feed-icons">
+      {% block feed %}
+        {{ feed_icons }}
+      {% endblock %}
+    </div>
+  {% endif %}
+</div>

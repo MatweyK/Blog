@@ -1,0 +1,9 @@
+{% extends 'region.html.twig' %}
+
+{% block region %}
+  <section{{ attributes.addClass(classes) }}>
+    <div class="{{ bem_block }}__container">
+      {{ block('content') }}
+    </div>
+  </section>
+{% endblock %}
