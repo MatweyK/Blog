@@ -5,11 +5,45 @@
   display: flex;
   flex-flow: row wrap; }
 
+.block-main__menu-item {
+  margin-right: 24px; }
+  .block-main__menu-item:last-child {
+    margin-right: 0; }
+
+.block-main__menu-item-link {
+  display: block;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 42px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1); }
+  .block-main__menu-item-link:hover {
+    color: #3f5efb; }
+
 .block-system-branding-block__site-name {
   display: block;
-  color: #f32129;
+  color: #fc466b;
   font-weight: bold;
-  font-size: 20px; }
+  font-size: 28px; }
+
+.block-footer__menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center; }
+
+.block-footer__menu-item {
+  margin: 0 16px; }
+
+.block-footer__menu-item-link {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #333333;
+  font-size: 14px; }
+  .block-footer__menu-item-link:hover {
+    color: #fc466b; }
 
 @font-face {
   font-family: "Material Design Icons";
@@ -28,7 +62,7 @@
   .breadcrumbs__path {
     display: inline; }
   .breadcrumbs__item-link {
-    color: #007bff; }
+    color: #fc466b; }
     .breadcrumbs__item-link::after {
       margin: 0 4px;
       content: "/"; }
@@ -72,13 +106,14 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  border: 1px solid transparent; }
+  border: none; }
 
 .button {
   color: #333333;
   background-color: #ffffff;
   background-image: none;
-  border-color: #cccccc;
+  background-image: linear-gradient(to right, #fc466b 0%, #3f5efb 100%);
+  background-repeat: repeat-x;
   transition: all .15s ease-in-out;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125); }
   .button:focus, .button:hover {
@@ -103,9 +138,10 @@
 .button--primary,
 .button--action {
   color: white;
-  background-color: #007bff;
+  background-color: #fc466b;
   background-image: none;
-  border-color: transparent;
+  background-image: linear-gradient(to right, #fc466b 0%, #3f5efb 100%);
+  background-repeat: repeat-x;
   transition: all .15s ease-in-out;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125); }
   .form-submit:focus, .form-submit:hover,
@@ -114,33 +150,34 @@
   .button--action:focus,
   .button--action:hover {
     color: white;
-    background-color: #0062cc;
+    background-color: #fb1443;
     border-color: transparent; }
   .form-submit:focus,
   .button--primary:focus,
   .button--action:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); }
+    box-shadow: 0 0 0 3px rgba(252, 70, 107, 0.5); }
   .form-submit:disabled,
   .button--primary:disabled,
   .button--action:disabled {
-    background-color: #007bff;
+    background-color: #fc466b;
     border-color: transparent;
     opacity: .65; }
   .form-submit:active,
   .button--primary:active,
   .button--action:active {
     color: white;
-    background-color: #0062cc;
+    background-color: #fb1443;
     background-image: none;
     border-color: transparent;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); }
+    box-shadow: 0 0 0 3px rgba(252, 70, 107, 0.5); }
 
 .button--warning {
   color: white;
   background-color: #ff9800;
   background-image: none;
-  border-color: #e68900;
+  background-image: linear-gradient(to right, #fc466b 0%, #3f5efb 100%);
+  background-repeat: repeat-x;
   transition: all .15s ease-in-out;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125); }
   .button--warning:focus, .button--warning:hover {
@@ -165,7 +202,8 @@
   color: white;
   background-color: #f44336;
   background-image: none;
-  border-color: #f32c1e;
+  background-image: linear-gradient(to right, #fc466b 0%, #3f5efb 100%);
+  background-repeat: repeat-x;
   transition: all .15s ease-in-out;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125); }
   .button-danger:focus, .button-danger:hover {
@@ -190,7 +228,8 @@
   color: white;
   background-color: #4caf50;
   background-image: none;
-  border-color: #449d48;
+  background-image: linear-gradient(to right, #fc466b 0%, #3f5efb 100%);
+  background-repeat: repeat-x;
   transition: all .15s ease-in-out;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125); }
   .button--success:focus, .button--success:hover {
@@ -215,7 +254,8 @@
   color: white;
   background-color: #29b6f6;
   background-image: none;
-  border-color: #11aef5;
+  background-image: linear-gradient(to right, #fc466b 0%, #3f5efb 100%);
+  background-repeat: repeat-x;
   transition: all .15s ease-in-out;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125); }
   .button--info:focus, .button--info:hover {
@@ -352,10 +392,10 @@
       padding: 0 0.25rem 0.25rem;
       font-weight: 600;
       text-decoration: none;
-      color: #007bff; }
+      color: #fc466b; }
     .pager__items .pager__item.is-active a {
-      border-bottom-color: #004a99;
-      color: #004a99; }
+      border-bottom-color: #d8042f;
+      color: #d8042f; }
 
 table {
   background: transparent; }
@@ -456,13 +496,13 @@ a.tabledrag-handle .handle {
       .tabs--primary .tabs__menu-item-link:hover {
         color: gray("500"); }
       .tabs--primary .tabs__menu-item-link.is-active {
-        color: #007bff;
+        color: #fc466b;
         font-weight: bold; }
         .tabs--primary .tabs__menu-item-link.is-active::before {
           content: '';
           width: 70%;
           height: 4px;
-          background: #007bff;
+          background: #fc466b;
           position: absolute;
           bottom: 0;
           left: 15%; }
@@ -479,11 +519,11 @@ a.tabledrag-handle .handle {
       color: #333333; }
       .tabs--secondary .tabs__menu-item-link:hover {
         color: gray("500");
-        border-bottom-color: #007bff; }
+        border-bottom-color: #fc466b; }
       .tabs--secondary .tabs__menu-item-link.is-active {
         border-bottom-width: 2px;
-        border-bottom-color: #007bff;
-        color: #007bff;
+        border-bottom-color: #fc466b;
+        color: #fc466b;
         font-weight: bold; }
         .tabs--secondary .tabs__menu-item-link.is-active:hover {
           color: theme-color-level("primary", 4); }
@@ -620,9 +660,10 @@ a.tabledrag-handle .handle {
       margin: 0 auto; }
       .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .button {
         color: white;
-        background-color: #007bff;
+        background-color: #fc466b;
         background-image: none;
-        border-color: transparent;
+        background-image: linear-gradient(to right, #fc466b 0%, #3f5efb 100%);
+        background-repeat: repeat-x;
         transition: all .15s ease-in-out;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
         padding: 8px;
@@ -631,21 +672,21 @@ a.tabledrag-handle .handle {
         text-transform: uppercase; }
         .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .button:focus, .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .button:hover {
           color: white;
-          background-color: #0062cc;
+          background-color: #fb1443;
           border-color: transparent; }
         .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .button:focus {
           outline: none;
-          box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); }
+          box-shadow: 0 0 0 3px rgba(252, 70, 107, 0.5); }
         .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .button:disabled {
-          background-color: #007bff;
+          background-color: #fc466b;
           border-color: transparent;
           opacity: .65; }
         .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .button:active {
           color: white;
-          background-color: #0062cc;
+          background-color: #fb1443;
           background-image: none;
           border-color: transparent;
-          box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); }
+          box-shadow: 0 0 0 3px rgba(252, 70, 107, 0.5); }
         .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .button .ui-button-text {
           padding: 0; }
 
@@ -672,6 +713,7 @@ a.tabledrag-handle .handle {
     padding-left: 15px;
     display: flex;
     flex-flow: row wrap;
+    align-items: center;
     position: relative;
     z-index: 20; }
     @media (min-width: 468px) {
@@ -709,8 +751,145 @@ a.tabledrag-handle .handle {
   .header .block-system-branding-block {
     margin-right: 20px; }
 
+.footer {
+  background: #fafafa;
+  padding: 40px 0; }
+  .footer__content {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px; }
+    @media (min-width: 468px) {
+      .footer__content {
+        width: 420px;
+        max-width: 100%; } }
+    @media (min-width: 768px) {
+      .footer__content {
+        width: 720px;
+        max-width: 100%; } }
+    @media (min-width: 992px) {
+      .footer__content {
+        width: 960px;
+        max-width: 100%; } }
+    @media (min-width: 1200px) {
+      .footer__content {
+        width: 1140px;
+        max-width: 100%; } }
+    @media (min-width: 468px) {
+      .footer__content {
+        padding-right: 15px;
+        padding-left: 15px; } }
+    @media (min-width: 768px) {
+      .footer__content {
+        padding-right: 15px;
+        padding-left: 15px; } }
+    @media (min-width: 992px) {
+      .footer__content {
+        padding-right: 15px;
+        padding-left: 15px; } }
+    @media (min-width: 1200px) {
+      .footer__content {
+        padding-right: 15px;
+        padding-left: 15px; } }
+  .footer .block-footer,
+  .footer .footer-social, .footer__copyright {
+    margin-bottom: 32px; }
+  .footer__copyright {
+    text-transform: uppercase;
+    text-align: center;
+    color: #616161;
+    font-size: 14px; }
+  .footer__top {
+    display: table;
+    margin: 0 auto;
+    font-size: 13px; }
+    .footer__top:before {
+      content: "\F360";
+      font-family: "Material Design Icons";
+      font-weight: normal;
+      font-style: normal;
+      display: inline-block;
+      text-decoration: inherit;
+      margin-right: 0; }
+    .footer__top::before {
+      font-size: 24px;
+      position: relative;
+      top: 4px; }
+
+.footer-social__items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center; }
+
+.footer-social__item {
+  margin: 0 8px; }
+
+.footer-social__link {
+  display: block;
+  width: 42px;
+  height: 42px;
+  border-radius: 50px;
+  background: #fc466b;
+  box-shadow: 0 2px 4px rgba(252, 70, 107, 0.5);
+  color: white;
+  font-size: 24px;
+  line-height: 42px;
+  text-align: center;
+  transition: all 0.25s ease; }
+  .footer-social__link:hover {
+    background: #3f5efb;
+    box-shadow: 0 2px 4px rgba(252, 70, 107, 0.5); }
+
+.footer-social__link--facebook:before {
+  content: "\F20C";
+  font-family: "Material Design Icons";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  margin-right: 0; }
+
+.footer-social__link--vk:before {
+  content: "\F579";
+  font-family: "Material Design Icons";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  margin-right: 0; }
+
+.footer-social__link--twitter:before {
+  content: "\F544";
+  font-family: "Material Design Icons";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  margin-right: 0; }
+
+.footer-social__link--youtube:before {
+  content: "\F5C3";
+  font-family: "Material Design Icons";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  margin-right: 0; }
+
+.footer-social__link--linkedin:before {
+  content: "\F33B";
+  font-family: "Material Design Icons";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  margin-right: 0; }
+
 .blog-hero {
-  margin-top: -24px;
+  margin-top: -42px;
   position: relative;
   z-index: 0;
   height: 600px;
@@ -769,6 +948,12 @@ a.tabledrag-handle .handle {
     position: absolute;
     width: 100%;
     height: 100%; }
+  .blog-hero__video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover; }
   .blog-hero::before {
     content: '';
     display: block;
@@ -778,7 +963,47 @@ a.tabledrag-handle .handle {
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: linear-gradient(to bottom, rgba(70, 45, 2, 0.2) 0%, rgba(6, 26, 37, 0.2) 100%);
+    background-image: linear-gradient(to bottom, rgba(0, 21, 16, 0.4) 0%, rgba(0, 191, 143, 0.26) 100%);
     background-repeat: repeat-x; }
+
+.main-layout {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 48px;
+  padding-bottom: 48px; }
+  @media (min-width: 468px) {
+    .main-layout {
+      width: 420px;
+      max-width: 100%; } }
+  @media (min-width: 768px) {
+    .main-layout {
+      width: 720px;
+      max-width: 100%; } }
+  @media (min-width: 992px) {
+    .main-layout {
+      width: 960px;
+      max-width: 100%; } }
+  @media (min-width: 1200px) {
+    .main-layout {
+      width: 1140px;
+      max-width: 100%; } }
+  @media (min-width: 468px) {
+    .main-layout {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 768px) {
+    .main-layout {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 992px) {
+    .main-layout {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 1200px) {
+    .main-layout {
+      padding-right: 15px;
+      padding-left: 15px; } }
 
 /*# sourceMappingURL=maps/components.css.map */

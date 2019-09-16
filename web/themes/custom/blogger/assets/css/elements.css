@@ -3,16 +3,16 @@
   min-width: 0; }
 
 :focus {
-  outline: 2px dashed rgba(0, 123, 255, 0.3);
+  outline: 2px dashed rgba(252, 70, 107, 0.3);
   outline-offset: 3px; }
 
 ::-moz-selection {
-  background: #007bff;
-  color: #ffffff; }
+  background: #fc466b;
+  color: #212121; }
 
 ::selection {
-  background: #007bff;
-  color: #ffffff; }
+  background: #fc466b;
+  color: #212121; }
 
 body {
   background: #ffffff; }
@@ -33,7 +33,7 @@ body {
   color: #333333; }
 
 a {
-  color: #007bff;
+  color: #fc466b;
   text-decoration: none; }
   a:hover {
     color: theme-color-level("primary", 4);
@@ -198,7 +198,7 @@ select {
   textarea:focus,
   select:focus {
     outline: medium none;
-    border-color: #007bff; }
+    border-color: #fc466b; }
   input[type='text']:disabled,
   input[type='password']:disabled,
   input[type='email']:disabled,

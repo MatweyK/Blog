@@ -1,5 +1,5 @@
 .blog-hero {
-  margin-top: -24px ;
+  margin-top: -42px ;
   position: relative;
   z-index: 0;
   height: 600px;
@@ -33,6 +33,13 @@
     //object-fit: cover;
   }
 
+  &__video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   &::before {
     content: '';
     display: block;
@@ -42,6 +49,6 @@
     right: 0;
     bottom: 0;
     left: 0;
-    @include gradient-y(rgba(70, 45, 2, 0.2), rgba(6, 26, 37, 0.2));
+    @include gradient-y(rgba(0, 21, 16, 0.4), rgba(0, 191, 143, 0.26));
   }
 }

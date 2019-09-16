@@ -24,7 +24,7 @@ class BlogHeroPluginGenerator extends BaseGenerator {
   /**
    * {@inheritdoc}
    */
-  protected $alias = 'dh';
+  protected $alias = 'bh';
 
   /**
    * {@inheritdoc}

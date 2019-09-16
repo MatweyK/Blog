@@ -1,0 +1,56 @@
+uuid: 96bbeffb-28f4-464f-aa81-8fa86af4b09e
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+    - system.menu.footer
+  module:
+    - block
+    - system
+id: footer_main
+label: 'Footer: Main'
+page:
+  status: false
+  title: ''
+  path: ''
+  theme: ''
+  display_variant: ''
+  access:
+    type: all
+    permission: ''
+    role: {  }
+block:
+  status: false
+  name: ''
+display_variant:
+  status: false
+  admin_label: ''
+layout:
+  status: false
+  label: null
+  default_region: null
+template:
+  value: "{% set bem_block = 'footer' %}\r\n<footer class = \"{{ bem_block }}\">\r\n  <div class = \"{{ bem_block }}__content\">\r\n    {{ snippet('social_links', { bem_block: 'footer-social' }) }}\r\n    \r\n    {{ footer_menu }}\r\n    \r\n    <div class = \"{{ bem_block }}__copyright\">\r\n      &copy; {{ 'now'|date('Y') }}<strong> Blog-hero</strong>\r\n    </div>\r\n    <a href = \"#\"  class = \"{{ bem_block }}__top\">Up</a>\r\n  </div>\r\n</footer>"
+  format: full_html
+css:
+  status: false
+  preprocess: true
+  value: null
+  group: component
+js:
+  status: false
+  preprocess: true
+  value: null
+variables:
+  footer_menu:
+    plugin_id: 'block:system_menu_block:footer'
+    configuration:
+      label: Footer
+      label_display: 0
+      level: '1'
+      depth: '0'
+      expand_all_items: 0
+      settings:
+        label: ''
+        label_display: false

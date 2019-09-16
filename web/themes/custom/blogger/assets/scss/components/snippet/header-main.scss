@@ -4,6 +4,7 @@
   &__top {
     @include media-container();
     lost-flex-container: row;
+    align-items: center;
     position: relative;
     z-index: 20;
   }

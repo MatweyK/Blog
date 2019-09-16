@@ -56,7 +56,8 @@ $btn-info-border: darken($btn-info-bg, 5%) !default;
   color: $color;
   background-color: $background;
   background-image: none;
-  border-color: $border;
+  @include gradient-x(theme-color(), theme-color(secondary));
+  //border-color: $border;
   transition: all .15s ease-in-out;
   @if ($btn-enable-shadows) {
     box-shadow: $btn-box-shadow;
@@ -152,7 +153,7 @@ $btn-info-border: darken($btn-info-bg, 5%) !default;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  border: $input-btn-border-width solid transparent;
+  border: none;
 }
 
 // =====================================

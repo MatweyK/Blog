@@ -1,10 +1,10 @@
 {% set bem_block = 'app' %}
 <div class="{{ bem_block }}">
   {{ snippet('header_main') }}
-  <main class="{{ bem_block }}__content">
-    {{ page.sidebar_first }}
+  <main class="{{ bem_block }}__content main-layout">
     {{ page.content }}
+    {{ page.sidebar_first }}
   </main>
 
-
+  {{ snippet('footer_main') }}
 </div>

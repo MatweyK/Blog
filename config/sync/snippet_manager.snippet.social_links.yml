@@ -1,0 +1,41 @@
+uuid: c196da5d-799e-4ca8-bfb2-030b0fcb9261
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+id: social_links
+label: 'Social Links'
+page:
+  status: false
+  title: ''
+  path: ''
+  theme: ''
+  display_variant: ''
+  access:
+    type: all
+    permission: ''
+    role: {  }
+block:
+  status: false
+  name: ''
+display_variant:
+  status: false
+  admin_label: ''
+layout:
+  status: false
+  label: null
+  default_region: null
+template:
+  value: "{% set bem_block = bem_block ?: 'social-links' %}\r\n{% set social_items = {\r\n  'facebook': '#',\r\n  'vk': '#',\r\n  'twitter': '#',\r\n  'youtube': '#',\r\n  'linkedin': '#',\r\n}\r\n%}\r\n<div class = \"{{ bem_block }}\">\r\n  <ul class = \"{{ bem_block }}__items\">\r\n    {% for name, url in social_items %}\r\n        <li class = \"{{ bem_block }}__item \"><a href = \"{{ url }}\" class = \"{{ bem_block }}__link {{ bem_block }}__link--{{ name }}\"></a></li>\r\n    {% endfor %}\r\n  </ul>\r\n</div>"
+  format: full_html
+css:
+  status: false
+  preprocess: true
+  value: null
+  group: component
+js:
+  status: false
+  preprocess: true
+  value: null
+variables: {  }
