@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5844ace0-f502-4a28-a4a0-ec24a8c271b9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/web/modules/custom/blog_hero/src/Generator/BlogHeroPluginGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/modules/custom/blog_hero/src/Generator/BlogHeroPluginGenerator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/css/components.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/css/components.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/css/elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/css/elements.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/css/maps/components.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/css/maps/components.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/css/maps/elements.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/css/maps/elements.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/block/_block-main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/block/_block-main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/block/_block-system-branding-block.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/block/_block-system-branding-block.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/components.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/components.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/snippet/header-main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/snippet/header-main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/theme/_dlog-hero.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/theme/_blog-hero.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/ui/_button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/ui/_button.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/settings/_core.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/settings/_core.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/settings/_custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/settings/_custom.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/sync/snippet_manager.snippet.footer_main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/sync/snippet_manager.snippet.footer_main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/sync/snippet_manager.snippet.header_main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/sync/snippet_manager.snippet.header_main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/sync/snippet_manager.snippet.social_links.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/sync/snippet_manager.snippet.social_links.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/themes/custom/blogger/templates/page/page.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/web/themes/custom/blogger/templates/page/page.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -191,21 +183,21 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/web/themes/custom/blogger/node_modules/gulp" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../glazed8" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/block" />
-      <recent name="$PROJECT_DIR$/web/themes/custom/blogger" />
-      <recent name="$PROJECT_DIR$/web/modules/custom/blog_hero/src/Plugin" />
-      <recent name="$PROJECT_DIR$/web/modules/custom/blog_hero/src/Plugin/BlogHero/Path" />
-      <recent name="$PROJECT_DIR$/web/modules/custom/blog_hero/src/Plugin/BlogHero" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/node/blog-article" />
       <recent name="$PROJECT_DIR$/web/themes/custom/blogger" />
       <recent name="$PROJECT_DIR$/web/modules/custom/blog_hero/src/Annotation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/themes/custom/blogger/templates/include" />
+      <recent name="$PROJECT_DIR$/web/themes/custom/blogger/assets/scss/components/block" />
+      <recent name="$PROJECT_DIR$/web/themes/custom/blogger" />
+      <recent name="$PROJECT_DIR$/web/modules/custom/blog_hero/src/Plugin" />
+      <recent name="$PROJECT_DIR$/web/modules/custom/blog_hero/src/Plugin/BlogHero/Path" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -268,7 +260,9 @@
       <workItem from="1568355166523" duration="5300000" />
       <workItem from="1568377081539" duration="7047000" />
       <workItem from="1568615848877" duration="49000" />
-      <workItem from="1568615983491" duration="13515000" />
+      <workItem from="1568615983491" duration="14134000" />
+      <workItem from="1568705949270" duration="26000" />
+      <workItem from="1569580018624" duration="3980000" />
     </task>
     <servers />
   </component>
